@@ -1,0 +1,89 @@
+//AC
+//KMP
+#include <string>
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <cstdio>
+#include <ctime>
+using namespace std;
+
+vector<int> getNext(string str){
+	vector<int> next(str.length() + 1);
+	int strLen = str.length();
+	next[0] = -1;
+	int j = 0;
+	for (j = 1; j <= strLen; j++){
+		int k = next[j - 1];
+		if (k == -1){
+			next[j] = 0;
+			continue;
+		}
+		while (k != -1) {
+			if (str[j - 1] == str[k])
+			{
+				break;
+			}
+			k = next[k];
+		}
+		next[j] = k + 1;
+	}
+
+	return next;
+}
+/*
+int main(){
+clock_t start, finish;
+double  duration;
+start = clock();
+vector<int> a = getNext("abcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabdabcdabd");
+finish = clock();
+duration = (double)(finish - start) / CLOCKS_PER_SEC;
+printf("%lf\n", duration);
+system("pause");
+return 0;
+}
+*/
+int main(){
+	int T = 1;
+	scanf("%d", &T);
+	getchar(); //getchar();
+	while (T--){
+		string pattern, str;
+
+
+		getline(cin, pattern);
+		getline(cin, str);
+
+		// 		str = "BBC ABCDAB ABCDABCDABDE";
+		// 		pattern = "ABCDABD";
+		int res = 0;
+		vector<int> sheet = getNext(pattern);
+		int s = 0, p = 0;
+		while (s < str.length())
+		{
+			//if (s >= str.length()) break;
+			if (str[s] != pattern[p])
+			{
+				if (p == 0)
+				{
+					s++; 
+					continue;
+				}
+				p -= (p - sheet[p]);
+				continue;
+
+			}
+			else {
+				if (p == pattern.length() - 1)
+				{
+					res++;
+					//printf("%d\n", s-p);
+				}
+				s++; p++;
+			}
+		}
+		printf("%d\n", res);
+	}
+	return 0;
+}
