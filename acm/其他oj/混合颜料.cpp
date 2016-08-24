@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 vector<long long> v;
-int hi(long long a) { //获取a的二进制长度
+int hi(long long a) { //鑾峰彇a鐨勪簩杩涘埗闀垮害
 	int cnt = 0;
 	if (a == 0LL) {
 		return 1;
