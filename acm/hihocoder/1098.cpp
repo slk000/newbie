@@ -57,12 +57,10 @@ int N, M;
 int kruskal(int N) {
     DisjointSet d(N+1);
     int total_weight = 0;
-    vector<Edge> mst;
-    while (mst.size() != N - 1) {
+    while (!edges.empty()) {
         Edge e = edges.top();
         edges.pop();
         if (d.find_set(e.from) != d.find_set(e.to)) {
-            mst.push_back(e);
             d.merge(e.from, e.to);
             total_weight += e.weight;
         }
