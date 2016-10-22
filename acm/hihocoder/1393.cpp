@@ -86,7 +86,7 @@ int main() {
 
 		bool res = true;
 		for (int i = 1; i <= M; i++) {
-			res &= (G[N+i][0].cap == 0); //判断b[i]->t是否满流。因为这些吧都是在最早加的所以下标都是0
+			res &= (G[N+i][0].cap == 0); //判断b[i]->t是否满流。因为这些边都是在最早加的所以下标都是0
 		}
 		printf("%s\n", res?"Yes":"No");
 		for (int i = 0; i <= N + M + 1; i++)G[i].clear();
