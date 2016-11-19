@@ -43,7 +43,7 @@ int b() {
 		}
 		for (int i = 0; i < 4; i++) {
 			P n = cur + pp[i];
-			if (check(n) && n.time < arriveTime[n.r][n.c]) {  //¼ô¡£
+			if (check(n) && n.time < arriveTime[n.r][n.c]) {  //å‰ªã€‚
 				qu.push(n);
 				arriveTime[n.r][n.c] = n.time;
 			}
@@ -62,7 +62,7 @@ int main() {
 		scanf("%d %d %d", &r, &c, &t);
 		for (int j = 0; j < 5; j++) {
 			P p = P(r, c, 0) + pp[j];
-			if (p.r >= 0 && p.r < MAX && p.c >= 0 && p.c < MAX && map[p.r][p.c]>t) { //Ò»¸öµã¿ÉÄÜ±»Õ¨¶à´Î£¬È¡×îÔçÕ¨µ½Ê±µÄÊ±¼ä
+			if (p.r >= 0 && p.r < MAX && p.c >= 0 && p.c < MAX && map[p.r][p.c]>t) { //ä¸€ä¸ªç‚¹å¯èƒ½è¢«ç‚¸å¤šæ¬¡ï¼Œå–æœ€æ—©ç‚¸åˆ°æ—¶çš„æ—¶é—´
 				map[p.r][p.c] = t;
 			}
 		}

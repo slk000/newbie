@@ -1,3 +1,6 @@
+//AC
+//http://hihocoder.com/problemset/problem/1081
+//æœ€çŸ­è·¯
 #include <cstdio>
 #include <queue>
 #include <vector>
@@ -5,18 +8,18 @@
 #define MAX_POS 1010
 #define INF 0x3f3f3f3f
 using namespace std;
-typedef struct edge { int from, to, dis; } edge; //±ßÆğµã¡¢ÖĞµã¡¢³¤¶È
+typedef struct edge { int from, to, dis; } edge; //è¾¹èµ·ç‚¹ã€ä¸­ç‚¹ã€é•¿åº¦
 vector<edge> edges;
-int d[MAX_POS]; //startµ½Ã¿¸öµãµÄ×î¶Ì¾àÀë
+int d[MAX_POS]; //startåˆ°æ¯ä¸ªç‚¹çš„æœ€çŸ­è·ç¦»
 
-void solve(int start) { //Æğµã
+void solve(int start) { //èµ·ç‚¹
 	memset(d, INF, sizeof(d));
 	d[start] = 0;
 	while (1) {
-		bool flag = true; // Ã»ÓĞ¸ü¶ÌµÄÂ·»òÕßÃ»ÓĞ¿É´ïµã£¿
+		bool flag = true; // æ²¡æœ‰æ›´çŸ­çš„è·¯æˆ–è€…æ²¡æœ‰å¯è¾¾ç‚¹ï¼Ÿ
 		for (int i = 0; i < edges.size(); i++) {
 			edge thisEdge = edges[i];
-			if (d[thisEdge.from] != INF && d[thisEdge.from] + thisEdge.dis < d[thisEdge.to]) { //´Ë±ß¿É´ïÇÒ¾­¹ı´Ë±ßµ½toµãµÄ¾àÀëĞ¡ÓÚÒÑÓĞ¾àÀë
+			if (d[thisEdge.from] != INF && d[thisEdge.from] + thisEdge.dis < d[thisEdge.to]) { //æ­¤è¾¹å¯è¾¾ä¸”ç»è¿‡æ­¤è¾¹åˆ°toç‚¹çš„è·ç¦»å°äºå·²æœ‰è·ç¦»
 				d[thisEdge.to] = d[thisEdge.from] + thisEdge.dis;
 				flag = false;
 			}

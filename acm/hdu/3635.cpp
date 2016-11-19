@@ -1,15 +1,15 @@
 //AC
-//²¢²é¼¯ 
+//å¹¶æŸ¥é›† 
 #include <iostream>
 #include <cstdio>
 #include <memory.h>
 #define NN 10010
 using namespace std;
 typedef struct Ball{
-    int loc;//Ã»ÓÃ 
-    int time;//Ö±½ÓÒÆ¶¯´ÎÊı £¨¼´×÷Îª¸ùÒÆ¶¯µÄ´ÎÊı£© 
+    int loc;//æ²¡ç”¨ 
+    int time;//ç›´æ¥ç§»åŠ¨æ¬¡æ•° ï¼ˆå³ä½œä¸ºæ ¹ç§»åŠ¨çš„æ¬¡æ•°ï¼‰ 
 };
-int cityCnt[NN];//¼ÇÂ¼Ã¿¸ö³ÇÊĞÁúÖéµÄ¸öÊı 
+int cityCnt[NN];//è®°å½•æ¯ä¸ªåŸå¸‚é¾™ç çš„ä¸ªæ•° 
 Ball ball[NN];
 class DisjointSet {
 private:
@@ -35,7 +35,7 @@ public:
         }
         return res;
     }
-    int getTimes(int node){//Ã¿Ò»¸ö½áµãµÄÊµ¼ÊÒÆ¶¯´ÎÊı=ËüµÄÖ±½ÓÒÆ¶¯´ÎÊı+Ëü¸¸½ÚµãÃÇµÄÒÆ¶¯´ÎÊı 
+    int getTimes(int node){//æ¯ä¸€ä¸ªç»“ç‚¹çš„å®é™…ç§»åŠ¨æ¬¡æ•°=å®ƒçš„ç›´æ¥ç§»åŠ¨æ¬¡æ•°+å®ƒçˆ¶èŠ‚ç‚¹ä»¬çš„ç§»åŠ¨æ¬¡æ•° 
         int sum = ball[node].time;
         while(father[node] != node){
             node=father[node];

@@ -21,37 +21,37 @@ void insert(int x, int y, int weight) {
     edges[x].push_back(tmp);
 #ifdef NON_DIRECTED
     tmp.vertex = x;
-    edges[y].push_back(tmp);    //ÎŞÏòÍ¼
+    edges[y].push_back(tmp);    //æ— å‘å›¾
 #endif
 }
 bool operator>(const Edge &a, const Edge &b) { return a.weight > b.weight; }
 
-int N, M;  //½Úµã¸öÊı
+int N, M;  //èŠ‚ç‚¹ä¸ªæ•°
 int dist[MAX_NODE];
 int dist2[MAX_NODE];
 void dijkstra(int v) {
-    typedef Edge Path;    //×î¶Ì¾àÀë¡¢µã±àºÅ
+    typedef Edge Path;    //æœ€çŸ­è·ç¦»ã€ç‚¹ç¼–å·
     memset(dist, 0x3f, sizeof(dist));
 	memset(dist2, 0x3f, sizeof(dist));
     dist[v] = 0;
-    priority_queue<Path, vector<Path>, greater<Path> > qu;  //´æ´¢¸÷µã¾àÀëÔ´µãµÄ(×î¶Ì)Â·¾¶
+    priority_queue<Path, vector<Path>, greater<Path> > qu;  //å­˜å‚¨å„ç‚¹è·ç¦»æºç‚¹çš„(æœ€çŸ­)è·¯å¾„
     Path init = { v, 0 };
     qu.push(init);
     while (!qu.empty()) {
-        Path min_path = qu.top();    //Ã¿´ÎÑ¡Ò»¸ö¾àÀëÔ´µã×î½üµÄµã£¨²»Ò»¶¨ÊÇÖ±½ÓÁ¬½ÓµÄ£©
+        Path min_path = qu.top();    //æ¯æ¬¡é€‰ä¸€ä¸ªè·ç¦»æºç‚¹æœ€è¿‘çš„ç‚¹ï¼ˆä¸ä¸€å®šæ˜¯ç›´æ¥è¿æ¥çš„ï¼‰
         qu.pop();
         if (min_path.weight > dist2[min_path.vertex]) continue;
 
         for (int i = 0; i < edges[min_path.vertex].size(); i++) {
             Edge &j = edges[min_path.vertex][i];
 			int newlength = min_path.weight + j.weight;
-            if (newlength < dist[j.vertex]) {  //È¡µÃ´Î¶ÌÂ·¾ÍÊÇ¼ÓÒ»¸ö´Î¶ÌÂ·dist2£¬¼ÆËã·½·¨ºÍÔÚÒ»¶ÑÊıÖĞÈ¡×îĞ¡µÄÁ½¸öÖµÒ»Ñù
-				dist2[j.vertex] = dist[j.vertex];  //Èç¹ûÓĞÖµ±Èµ±Ç°µÄ×îĞ¡ÖµĞ¡£¬ÄÇÃ´Õâ¸öÖµ³ÉÎªĞÂµÄ×îĞ¡Öµ£¬ÒÔÇ°µÄ×îĞ¡Öµ³ÉÎª´ÎĞ¡Öµ
+            if (newlength < dist[j.vertex]) {  //å–å¾—æ¬¡çŸ­è·¯å°±æ˜¯åŠ ä¸€ä¸ªæ¬¡çŸ­è·¯dist2ï¼Œè®¡ç®—æ–¹æ³•å’Œåœ¨ä¸€å †æ•°ä¸­å–æœ€å°çš„ä¸¤ä¸ªå€¼ä¸€æ ·
+				dist2[j.vertex] = dist[j.vertex];  //å¦‚æœæœ‰å€¼æ¯”å½“å‰çš„æœ€å°å€¼å°ï¼Œé‚£ä¹ˆè¿™ä¸ªå€¼æˆä¸ºæ–°çš„æœ€å°å€¼ï¼Œä»¥å‰çš„æœ€å°å€¼æˆä¸ºæ¬¡å°å€¼
                 dist[j.vertex] = newlength;
                 Path newPath = { j.vertex, dist[j.vertex] };
                 qu.push(newPath);   
             }
-			else if (newlength > dist[j.vertex] && newlength < dist2[j.vertex]) {//Èç¹ûÒ»¸öÊıÖ±½Ó¾ÍÊÇ´ÎĞ¡Öµ£¬Ö±½Ó¸üĞÂdist2
+			else if (newlength > dist[j.vertex] && newlength < dist2[j.vertex]) {//å¦‚æœä¸€ä¸ªæ•°ç›´æ¥å°±æ˜¯æ¬¡å°å€¼ï¼Œç›´æ¥æ›´æ–°dist2
 				dist2[j.vertex] = newlength;
 				Path newPath = { j.vertex, dist2[j.vertex] };
 				qu.push(newPath);

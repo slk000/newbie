@@ -1,3 +1,5 @@
+//AC
+//http://hihocoder.com/problemset/problem/1051
 #include <cstdio>
 int main (){
 	int T;

@@ -12,7 +12,7 @@ public:
 	Trie_node *childs[26];
 	bool isWord;
 	int f;
-	map<char, int> words;//Êý¾Ý²»Ö¹ÓÐÓ¢ÎÄ×ÖÄ¸ ËùÒÔÐèÒª¸ø×Ö·û±àºÅ
+	map<char, int> words;//æ•°æ®ä¸æ­¢æœ‰è‹±æ–‡å­—æ¯ æ‰€ä»¥éœ€è¦ç»™å­—ç¬¦ç¼–å·
 	Trie_node(){
 		for (int i = 0; i < 26; i++) childs[i] = NULL;
 		f = 0;
@@ -41,15 +41,15 @@ public:
 			}
 			else {
 				cur->childs[index] = new Trie_node;
-				//flag = 1;//Èç¹ûnewÁËËµÃ÷ÕâÊÇÒ»¸öÐÂµ¥´Ê
+				//flag = 1;//å¦‚æžœnewäº†è¯´æ˜Žè¿™æ˜¯ä¸€ä¸ªæ–°å•è¯
 			}
-			cur->childs[index]->f++; //ÌâÄ¿ÒªÇóÏàÍ¬µ¥´ÊÊÓÎª²»Í¬µ¥´Ê
-			//adds.push_back(&(cur->childs[index]->f)); //·ñÔòÓÃadds´æÏÂ¸Ãµ¥´ÊËùÓÐf£¬
+			cur->childs[index]->f++; //é¢˜ç›®è¦æ±‚ç›¸åŒå•è¯è§†ä¸ºä¸åŒå•è¯
+			//adds.push_back(&(cur->childs[index]->f)); //å¦åˆ™ç”¨addså­˜ä¸‹è¯¥å•è¯æ‰€æœ‰fï¼Œ
 			cur = cur->childs[index];
 			//}
 
 		}
-// 		if (flag)//ÔÙÅÐ¶ÏÕâ»ØÊÇ·ñÊÇÒ»¸öÐÂµ¥´Ê£¬ÈôÊÇ£¬¸øµÃµÀËüÐè¾­¹ýµÄËùÓÐ½ÚµãµÄf¼Ó1
+// 		if (flag)//å†åˆ¤æ–­è¿™å›žæ˜¯å¦æ˜¯ä¸€ä¸ªæ–°å•è¯ï¼Œè‹¥æ˜¯ï¼Œç»™å¾—é“å®ƒéœ€ç»è¿‡çš„æ‰€æœ‰èŠ‚ç‚¹çš„fåŠ 1
 // 		{
 // 			for (int i = 0; i < adds.size(); i++)
 // 			{

@@ -1,3 +1,5 @@
+//AC
+//http://hihocoder.com/problemset/problem/1082
 #include <iostream>
 #include <string>
 #include <cctype>

@@ -1,6 +1,6 @@
 //AC
 //http://hihocoder.com/problemset/problem/1393
-//Edmonds-Karp ×î´óÁ÷ Ford-Fulkerson µÄBFSÊµÏÖ
+//Edmonds-Karp æœ€å¤§æµ Ford-Fulkerson çš„BFSå®ç°
 #include <cstdio>
 #include <vector>
 #include <algorithm>
@@ -10,7 +10,7 @@ using namespace std;
 #define MAX_V 510
 #define INF 0x3f3f3f3f
 typedef struct Edge {
-	int from, to, rev;//reverse:from->toÕâÌõ±ßµÄ·´Ïò±ß£¨to->from£©ÔÚG[to]Êı×éÖĞµÄÏÂ±ê
+	int from, to, rev;//reverse:from->toè¿™æ¡è¾¹çš„åå‘è¾¹ï¼ˆto->fromï¼‰åœ¨G[to]æ•°ç»„ä¸­çš„ä¸‹æ ‡
 	int cap;
 	Edge() { cap = 0; }
 	Edge(int f, int t, int c, int r) : from(f), to(t), cap(c), rev(r) {}
@@ -33,15 +33,15 @@ int bfs(int s, int t) {
 		for (int i = 0; i < G[cur].size(); i++) {
 			Edge &e = G[cur][i];
 			if (!vis[e.to] && e.cap > 0) {
-				p[e.to] = &e; //¼ÇÂ¼Â·¾¶
+				p[e.to] = &e; //è®°å½•è·¯å¾„
 				vis[e.to] = min(e.cap, vis[cur]);
 				work.push(e.to);
 			}
 		}
-		if (vis[t]) break;//Õâ´ÎÔö¹ãÃ»ÓĞÂ·ÄÜµ½tÁË£¬ÍË³ö
+		if (vis[t]) break;//è¿™æ¬¡å¢å¹¿æ²¡æœ‰è·¯èƒ½åˆ°täº†ï¼Œé€€å‡º
 	}
 	if (!vis[t]) return 0;
-	for (int e = t; e != s; e = p[e]->from) { //´Ótµ¹×Å¸üĞÂÔö¹ãÂ·ÉÏµÄ±ßµÄÈİÁ¿
+	for (int e = t; e != s; e = p[e]->from) { //ä»tå€’ç€æ›´æ–°å¢å¹¿è·¯ä¸Šçš„è¾¹çš„å®¹é‡
 		p[e]->cap -= vis[t];
 		G[e][p[e]->rev].cap += vis[t];
 	}
@@ -86,7 +86,7 @@ int main() {
 
 		bool res = true;
 		for (int i = 1; i <= M; i++) {
-			res &= (G[N+i][0].cap == 0); //ÅĞ¶Ïb[i]->tÊÇ·ñÂúÁ÷¡£ÒòÎªÕâĞ©±ß¶¼ÊÇÔÚ×îÔç¼ÓµÄËùÒÔÏÂ±ê¶¼ÊÇ0
+			res &= (G[N+i][0].cap == 0); //åˆ¤æ–­b[i]->tæ˜¯å¦æ»¡æµã€‚å› ä¸ºè¿™äº›è¾¹éƒ½æ˜¯åœ¨æœ€æ—©åŠ çš„æ‰€ä»¥ä¸‹æ ‡éƒ½æ˜¯0
 		}
 		printf("%s\n", res?"Yes":"No");
 		for (int i = 0; i <= N + M + 1; i++)G[i].clear();

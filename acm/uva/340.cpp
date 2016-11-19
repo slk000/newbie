@@ -1,3 +1,4 @@
+//AC
 #include <cstdio>
 #include <memory.h>
 int guess[1005];

@@ -1,6 +1,6 @@
 //AC
 //http://hihocoder.com/problemset/problem/1043
-//ÍêÈ«±³°ü
+//å®Œå…¨èƒŒåŒ…
 #include <stdio.h>
 #include <cstring>
 #define MAX_N 500
@@ -11,7 +11,7 @@ int bagMap[MAX_BAG + 1],
     value[MAX_N];
 int main(int argc, char const *argv[])
 {
-    int num, bagMax; //ÎïÆ·ÊıÁ¿¡¢±³°ü×î´ó´óĞ¡
+    int num, bagMax; //ç‰©å“æ•°é‡ã€èƒŒåŒ…æœ€å¤§å¤§å°
     int i, j;
     scanf("%d%d", &num, &bagMax);
 

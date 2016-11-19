@@ -17,30 +17,30 @@ int solve(int n) {
 	if (n == 2) {
 		return digits[1] - digits[0];
 	}
-	int half = n >> 1;//ÆæÊý¸öÊ±AÓÐhalf+1Î»BÓÐhalfÎ»£»Å¼Êý¸öÊ±¶¼ÓÐhalf¸ö
-	if (n & 1) {  //ÆæÊý¸ö
+	int half = n >> 1;//å¥‡æ•°ä¸ªæ—¶Aæœ‰half+1ä½Bæœ‰halfä½ï¼›å¶æ•°ä¸ªæ—¶éƒ½æœ‰halfä¸ª
+	if (n & 1) {  //å¥‡æ•°ä¸ª
 		int a = 0, b = 0; // a>=b
 		if (!digits[0]) {
 			swap(digits[0], digits[1]); //
 		}
 		int i = 0;
-		for (i = 0; i < half + 1; i++) {  //Ñ¡ÔñÒ»¸ö·Ç0µÄ×îÐ¡Êý×Ö×÷ÎªAµÄ×î¸ßÎ»£¬È»ºóÊ£ÏÂµÄhalf¸öÎ»ÖÃ×é³ÉµÄÊý×Ö¾¡¿ÉÄÜÐ¡£¨¼´°´ÉýÐòÅÅ£©£»
+		for (i = 0; i < half + 1; i++) {  //é€‰æ‹©ä¸€ä¸ªéž0çš„æœ€å°æ•°å­—ä½œä¸ºAçš„æœ€é«˜ä½ï¼Œç„¶åŽå‰©ä¸‹çš„halfä¸ªä½ç½®ç»„æˆçš„æ•°å­—å°½å¯èƒ½å°ï¼ˆå³æŒ‰å‡åºæŽ’ï¼‰ï¼›
 			a += digits[i] * ::pows[half - i]; 
 		}
 		for (; i < n; i++) {
-			b += digits[i] * ::pows[i - half - 1]; //Ê£ÏÂhalf¸ö½µÐòÅÅ×é³ÉB
+			b += digits[i] * ::pows[i - half - 1]; //å‰©ä¸‹halfä¸ªé™åºæŽ’ç»„æˆB
 		}
 		return a - b;
 	}
-	else {  //Å¼Êý
+	else {  //å¶æ•°
 		bool vis[MAX];
 		memset(vis, true, sizeof(vis));
 		int minDiff = INF, minRes = INF;
 		vector<pair<int, int> > ve;
-		for (int i = 0; i < n - 1; i++) {  //ÕÒ³öËùÓÐ²îÖµ×îÐ¡µÄÊý×Ö¶Ô
+		for (int i = 0; i < n - 1; i++) {  //æ‰¾å‡ºæ‰€æœ‰å·®å€¼æœ€å°çš„æ•°å­—å¯¹
 			vis[digits[i]] = vis[digits[i + 1]] = false;
 			if (digits[i] && digits[i + 1]) {
-				if (digits[i + 1] - digits[i] < minDiff) { //ÓÐ¸üÐ¡µÄ£¬Çå¿ÕÒÔÇ°µÄ
+				if (digits[i + 1] - digits[i] < minDiff) { //æœ‰æ›´å°çš„ï¼Œæ¸…ç©ºä»¥å‰çš„
 					minDiff = digits[i + 1] - digits[i];
 					ve.clear();
 				}
@@ -51,17 +51,17 @@ int solve(int n) {
 		}
 		bool bak[11];
 		memcpy(bak, vis, sizeof(vis));
-		for (int i = 0; i < ve.size(); i++) { //¶ÔÓÚÃ¿ÖÖ×î¸ßÎ»µÄÇÕ¶¨Çé¿ö
+		for (int i = 0; i < ve.size(); i++) { //å¯¹äºŽæ¯ç§æœ€é«˜ä½çš„é’¦å®šæƒ…å†µ
 			memcpy(vis, bak, sizeof(bak));
 			vis[ve[i].first] = vis[ve[i].second] = true;
-			int tmpA = pows[half - 1] * ve[i].second; //×îÐ¡²îÖµµÄÊý¶Ô½Ï´óµÄÊý
+			int tmpA = pows[half - 1] * ve[i].second; //æœ€å°å·®å€¼çš„æ•°å¯¹è¾ƒå¤§çš„æ•°
 			int tmpB = pows[half - 1] * ve[i].first;
-			int j = 0, jj = 1; //jÔÚdigitsÉÏ±éÀú£¬jj´ú±í¼ÆËãµ½ÄÄÒ»Î»ÉÏ£¨´Ó×ó£©
-			for (j = 0, jj = 1; jj < half; j++) { //¶ÔÓÚ×î¸ßÎ»¸ü¸ßµÄÊýtmpA£¬Ê£ÏÂµÄÊý×ÖÔÚºóÃæµÄÊýÎ»ÉÏÉýÐò
+			int j = 0, jj = 1; //jåœ¨digitsä¸ŠéåŽ†ï¼Œjjä»£è¡¨è®¡ç®—åˆ°å“ªä¸€ä½ä¸Šï¼ˆä»Žå·¦ï¼‰
+			for (j = 0, jj = 1; jj < half; j++) { //å¯¹äºŽæœ€é«˜ä½æ›´é«˜çš„æ•°tmpAï¼Œå‰©ä¸‹çš„æ•°å­—åœ¨åŽé¢çš„æ•°ä½ä¸Šå‡åº
 				if (!vis[digits[j]]) {
 					vis[digits[j]] = true;
 					tmpA += pows[half - 1 - jj] * digits[j];
-					jj++;  //ÉýÐò
+					jj++;  //å‡åº
 					
 				}
 			}
@@ -69,7 +69,7 @@ int solve(int n) {
 				if (!vis[digits[j]]) {
 					vis[digits[j]] = true;
 					tmpB += pows[half - 1 - jj] * digits[j];
-					jj--;  //½µÐò
+					jj--;  //é™åº
 
 				}
 			}

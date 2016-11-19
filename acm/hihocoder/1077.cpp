@@ -1,3 +1,6 @@
+//AC
+//http://hihocoder.com/problemset/problem/1077
+//线段树
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -1,6 +1,6 @@
 //AC
 //http://poj.org/problem?id=3723
-//×îĞ¡Éú³ÉÊ÷
+//æœ€å°ç”Ÿæˆæ ‘
 #include <cstdio>
 #include <algorithm>
 #include <vector>
@@ -80,7 +80,7 @@ int main() {
 		for (int i = 0; i < R; i++) {
 			int from, to, weight;
 			scanf("%d %d %d", &from, &to, &weight);
-			insert(from, to + n1, -weight);  //¸ººÅ+×îĞ¡Éú³ÉÊ÷= -×î´ó½ÚÊ¡µÄÖµ
+			insert(from, to + n1, -weight);  //è´Ÿå·+æœ€å°ç”Ÿæˆæ ‘= -æœ€å¤§èŠ‚çœçš„å€¼
 		}
 		printf("%d\n", 10000 * (N)+kruskal(N));
 	}

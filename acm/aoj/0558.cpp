@@ -50,7 +50,7 @@ void b(int aim) {
 			P n = cur + pp[i];
 			if (check(n)) {
 				qu.push(n);
-				vis[n.r][n.c] = 1; //£¿£¿
+				vis[n.r][n.c] = 1; //ï¼Ÿï¼Ÿ
 			}
 		}
 

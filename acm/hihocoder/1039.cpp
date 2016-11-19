@@ -16,7 +16,7 @@
 using namespace std;
 #define INF 0x3f3f3f3f
 #define MAX 110
-void del(string &str) {//消除字符
+void del(string &str) {//娑堥櫎瀛楃
 	
 	int i = 0, j = 0;
 	bool modified = false;
@@ -33,7 +33,7 @@ void del(string &str) {//消除字符
 	del(str);
 }
 int main() {
-	std::ios::sync_with_stdio(false);//用这个的话不要cin/scanf cout/printf混用
+	std::ios::sync_with_stdio(false);//鐢ㄨ繖涓殑璇濅笉瑕乧in/scanf cout/printf娣风敤
 	std::cin.tie(0);
 	
 	int T;
@@ -45,9 +45,9 @@ int main() {
 		
 		int cntBefore = str.length() + 1;
 		int res = -1;
-		for (int i = 0; i <= str.length(); i++) {//枚举每个位置
+		for (int i = 0; i <= str.length(); i++) {//鏋氫妇姣忎釜浣嶇疆
 			
-			for (int j = 0; j < 3; j++) {//枚举三个字符
+			for (int j = 0; j < 3; j++) {//鏋氫妇涓変釜瀛楃
 				string str2 = str;
 				str2.insert(i, 1, j + 'A');
 				del(str2);

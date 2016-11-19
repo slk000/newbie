@@ -1,6 +1,6 @@
 //AC
 //http://hihocoder.com/problemset/problem/1097
-//×îĞ¡Éú³ÉÊ÷Ä£°åÌâ
+//æœ€å°ç”Ÿæˆæ ‘æ¨¡æ¿é¢˜
 #include <iostream>
 #include <cstring>
 #include <vector>
@@ -39,13 +39,13 @@ public:
         edges[x].push_back(tmp);
         
     }
-    int prim(int v) {  //ÇÕ¶¨Ò»¸öµãv×÷Îª×îĞ¡Éú³ÉÊ÷µÄ¶¥µã
+    int prim(int v) {  //é’¦å®šä¸€ä¸ªç‚¹vä½œä¸ºæœ€å°ç”Ÿæˆæ ‘çš„é¡¶ç‚¹
         int total_weight = 0;
-        dist[v] = 0;    //Õâ¸ö¶¥µã¾àÀë×îĞ¡Éú³ÉÊ÷µÄ¾àÀëÎª0
-        for (int i = 0; i < n; i++) {    //²éÕÒ¾àÀë×îĞ¡Éú³ÉÊ÷×î½üµÄµã£¨µÚÒ»´ÎÊ±ÕÒµÄµÄmin_vertexÎªv£©
+        dist[v] = 0;    //è¿™ä¸ªé¡¶ç‚¹è·ç¦»æœ€å°ç”Ÿæˆæ ‘çš„è·ç¦»ä¸º0
+        for (int i = 0; i < n; i++) {    //æŸ¥æ‰¾è·ç¦»æœ€å°ç”Ÿæˆæ ‘æœ€è¿‘çš„ç‚¹ï¼ˆç¬¬ä¸€æ¬¡æ—¶æ‰¾çš„çš„min_vertexä¸ºvï¼‰
             int min_dist = INF, min_vertex;
             for (int j = 0; j < n; j++) {
-                if (!visited[j] && dist[j] < min_dist) { //ÓÃvisited¿ÉÒÔÇø·Ö×îĞ¡Éú³ÉÊ÷µã¼¯ºÍÔ­Ê÷µã¼¯
+                if (!visited[j] && dist[j] < min_dist) { //ç”¨visitedå¯ä»¥åŒºåˆ†æœ€å°ç”Ÿæˆæ ‘ç‚¹é›†å’ŒåŸæ ‘ç‚¹é›†
                     min_dist = dist[j];
                     min_vertex = j;
                 }
@@ -53,7 +53,7 @@ public:
             }
             total_weight += min_dist;
             visited[min_vertex] = 1;
-            for (int k = 0; k < edges[min_vertex].size(); k++){//for (Edge &j : edges[min_vertex]) { //½«Õâ¸ö±ßÁ¬µ½µÄĞÂµãÖÜÎ§µÄ±ßµÄ³¤¶È¼Óµ½distÖĞ
+            for (int k = 0; k < edges[min_vertex].size(); k++){//for (Edge &j : edges[min_vertex]) { //å°†è¿™ä¸ªè¾¹è¿åˆ°çš„æ–°ç‚¹å‘¨å›´çš„è¾¹çš„é•¿åº¦åŠ åˆ°distä¸­
                 Edge &j = edges[min_vertex][k];
                 if (!visited[j.vertex] && j.weight < dist[j.vertex]) {
                     dist[j.vertex] = j.weight;

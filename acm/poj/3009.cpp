@@ -25,26 +25,26 @@ void d(int r, int c, int depth) {
 	if (depth > 10)return;
 	if (r == endR && c == endC) {
 		//str[depth] = '\n';
-		res = min(res, depth); //dfsËùÓĞ½á¹ûÈ¡×îĞ¡
+		res = min(res, depth); //dfsæ‰€æœ‰ç»“æœå–æœ€å°
 							   //printf("find at (%d, %d)\n%s depth%d\n", r, c, str,depth);
 		return;
 	}
 	
 	for (int i = 0; i < 4; i++) {
-		if (map[r + rr[i]][c + cc[i]] == 1)continue; //½ô°¤×ÅµÄ×©¿é²»ÄÜ¿¿ÒÆ¶¯À´ÅªËé
+		if (map[r + rr[i]][c + cc[i]] == 1)continue; //ç´§æŒ¨ç€çš„ç –å—ä¸èƒ½é ç§»åŠ¨æ¥å¼„ç¢
 		bool crash = false;
 		int nr = r + rr[i], nc = c + cc[i];
-		for (; check(nr, nc) && map[nr][nc] == 0; nr += rr[i], nc += cc[i]) {//²»¶ÏÍùÄÇ¸ö·½Ïò×ß
-			if (nr == endR && nc == endC) {//Ö»ÒªÍ¾¾¶ÁËÖÕµã¾ÍĞĞ
+		for (; check(nr, nc) && map[nr][nc] == 0; nr += rr[i], nc += cc[i]) {//ä¸æ–­å¾€é‚£ä¸ªæ–¹å‘èµ°
+			if (nr == endR && nc == endC) {//åªè¦é€”å¾„äº†ç»ˆç‚¹å°±è¡Œ
 				goto win;
 			}
 		}
 
-		if (!check(nr, nc))continue;//³å¹ıÍ·
+		if (!check(nr, nc))continue;//å†²è¿‡å¤´
 
-		if (map[nr][nc] == 1) { map[nr][nc] = 0; crash = true; } //´ËÊ±(nr,nc)ÊÇ±ùºøÍ£ÏÂÀ´µÄµØ·½ÔÙ¹ıÈ¥Ò»¸ö¡£Èç¹ûÓĞ×©¿éÔò×²Ëé
+		if (map[nr][nc] == 1) { map[nr][nc] = 0; crash = true; } //æ­¤æ—¶(nr,nc)æ˜¯å†°å£¶åœä¸‹æ¥çš„åœ°æ–¹å†è¿‡å»ä¸€ä¸ªã€‚å¦‚æœæœ‰ç –å—åˆ™æ’ç¢
 	
-		nr -= rr[i]; nc -= cc[i]; //±ùºøÍ£ÏÂµÄÎ»ÖÃ
+		nr -= rr[i]; nc -= cc[i]; //å†°å£¶åœä¸‹çš„ä½ç½®
 
 		//printf("(%d, %d)", nr, nc);
 

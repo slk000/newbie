@@ -23,10 +23,10 @@ int main (){
         sum = unique(pos, pos+sum) - pos;
         for (int i = 0; i < sum; i++){
             int j;
-            for (j = i; pos[i]+R >= pos[j]; j++);j--; //Ñ¡Ôñ¾İiµãÓÒ²à×îÔ¶µÄÎª±ê¼Çµã 
+            for (j = i; pos[i]+R >= pos[j]; j++);j--; //é€‰æ‹©æ®iç‚¹å³ä¾§æœ€è¿œçš„ä¸ºæ ‡è®°ç‚¹ 
             cnt++;
             int k;
-            for (k = j; pos[j]+R >= pos[k]; k++); //±ê¼ÇµãÓÒ²à»¹ÄÜ¸²¸ÇÒ»Ğ© 
+            for (k = j; pos[j]+R >= pos[k]; k++); //æ ‡è®°ç‚¹å³ä¾§è¿˜èƒ½è¦†ç›–ä¸€äº› 
             i = k;
             i--;
         }

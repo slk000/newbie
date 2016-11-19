@@ -1,6 +1,6 @@
 //AC
 //http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0121
-//bfs ¿µÍĞÕ¹¿ª
+//bfs åº·æ‰˜å±•å¼€
 #include <cstdio>
 #include <vector>
 #include <cstring>
@@ -10,9 +10,9 @@
 using namespace std;
 #define INF 0x3f3f3f3f
 #define N 8
-const int fac[] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };///½×³Ë  
+const int fac[] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };///é˜¶ä¹˜  
 
-int s2c(int s[], int n)  //¿µÍĞ
+int s2c(int s[], int n)  //åº·æ‰˜
 {
 	int i, j, cnt, sum;
 	sum = 0;
@@ -27,8 +27,8 @@ int s2c(int s[], int n)  //¿µÍĞ
 }
 
 
-//n-1ÊıÂë£¬µÚk¸öÅÅÁĞ  
-void c2s(int ans[], int n, int k)  //Äæ¿µÍĞ
+//n-1æ•°ç ï¼Œç¬¬kä¸ªæ’åˆ—  
+void c2s(int ans[], int n, int k)  //é€†åº·æ‰˜
 {
 	bool vis[10];
 	int i, j, t;
@@ -109,7 +109,7 @@ int b(/*int aim*/) {
 
 int main() {
 	int tmp[N] = { 0,1,2,3,4,5,6,7 };
-	b();//´ò±í´Ógoal¿ªÊ¼ÕÒ³öÈ«²¿ÓĞ½â×´Ì¬
+	b();//æ‰“è¡¨ä»goalå¼€å§‹æ‰¾å‡ºå…¨éƒ¨æœ‰è§£çŠ¶æ€
 
 	while (EOF != scanf("%d %d %d %d %d %d %d %d", &tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], &tmp[6], &tmp[7])) {
 		start = s2c(tmp, N);
