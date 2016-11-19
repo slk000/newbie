@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cstring>
 using namespace std;
-char str[30];
+char str[110];
 
 int main() {
     
