@@ -1,3 +1,5 @@
+//AC
+//https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=4458
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
