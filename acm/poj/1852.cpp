@@ -1,3 +1,5 @@
+//AC
+//http://poj.org/problem?id=1852
 #include <cstdio>
 using namespace std;
 int Max(int a, int b){
